@@ -1,0 +1,479 @@
+{
+	"info": {
+		"_postman_id": "d509843d-3ccf-4fbb-80b9-1344d999b7dc",
+		"name": "MODEC BackEnd API",
+		"description": "Collection for MODEC BackEnd API. Repo: https://github.com/mauricioribeiro/MODEC-BackEnd",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Vessels",
+			"item": [
+				{
+					"name": "List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "18be798b-01dd-4821-9d21-baab3e6699f9",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/vessels",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels"
+							]
+						},
+						"description": "Show a list of vessels"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65533680-6c9e-4293-aaf3-58980a9d7d03",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/vessels/{{code}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels",
+								"{{code}}"
+							]
+						},
+						"description": "Retrieve a single vessel by a given code"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7a71bf4b-e4fb-4f33-99ed-7d77eb1abae3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"MV102\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/vessels",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels"
+							]
+						},
+						"description": "Create a vessel"
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"MR200\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/vessels",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"vessels"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 07 Nov 2020 17:53:32 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"code\": \"MR200\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0371645f-dcf3-454f-92f6-a8fa16fa3b11",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"MX900\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/vessels/{{code}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels",
+								"{{code}}"
+							]
+						},
+						"description": "Update a vessel by a given content and code"
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"MX900\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/vessels/{{code}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"vessels",
+										"{{code}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 07 Nov 2020 17:57:40 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"code\": \"MV103\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e254de22-b8c7-4d43-8c16-851f7956c742",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/vessels/{{code}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels",
+								"{{code}}"
+							]
+						},
+						"description": "Delete a vessel by a given code"
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"MX900\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/vessels/{{code}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"vessels",
+										"{{code}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 07 Nov 2020 17:57:40 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"code\": \"MV103\"\n}"
+						}
+					]
+				}
+			],
+			"description": "RESTful endpoints for Vessel resource ",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7fb262c6-77b0-4e7a-830f-4a6191a586a3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "abc1223d-bf29-4bbd-bfce-a73c1f2d4331",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "52c94326-e2fb-4494-afa3-f9a42dc81718",
+			"key": "host",
+			"value": "http://localhost:8000"
+		},
+		{
+			"id": "7e2eb92e-24cd-4c5a-9108-ed665da0552e",
+			"key": "code",
+			"value": "MV102"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
