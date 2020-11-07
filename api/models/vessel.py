@@ -18,8 +18,11 @@ class Vessel(AbstractModel):
     ])
 
     class Meta:
+        """
+        Vessel meta which applies unique constraint for code when vessel is active
+        """
         constraints = [
-            UniqueConstraint(fields=['code'], condition=Q(is_active=True), name='unique_vessel_code')
+            UniqueConstraint(fields=['code'], condition=Q(status=True), name='unique_vessel_code')
         ]
 
     def __str__(self):
