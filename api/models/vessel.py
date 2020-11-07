@@ -18,7 +18,9 @@ class Vessel(AbstractModel):
     ])
 
     class Meta:
-        constraints = [UniqueConstraint(fields=['code'], condition=Q(is_active=True), name='unique_vessel_code')]
+        constraints = [
+            UniqueConstraint(fields=['code'], condition=Q(is_active=True), name='unique_vessel_code')
+        ]
 
     def __str__(self):
         return f'Vessel {self.code}' if self.code else super().__str__()

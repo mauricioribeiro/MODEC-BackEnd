@@ -157,3 +157,8 @@ LOGGING = {
         }
     }
 }
+
+# Rest Framework settings
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'api.handlers.api_exception_handler'
+}

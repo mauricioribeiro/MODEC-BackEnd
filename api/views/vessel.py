@@ -20,6 +20,8 @@ class VesselListView(VesselView, generics.ListAPIView, generics.CreateAPIView):
     view_name = 'vessel-list'
 
 
+
+
 class VesselDetailView(VesselView, generics.RetrieveAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
     """
     View for retrieve a single vessel, update and destroy Vessels over HTTP rest
