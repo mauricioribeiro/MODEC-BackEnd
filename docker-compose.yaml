@@ -1,0 +1,15 @@
+
+services:
+  db:
+    image: postgres:alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=modec
+      - POSTGRES_DB=modec
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data:
