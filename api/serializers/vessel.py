@@ -8,6 +8,8 @@ class VesselSerializer(serializers.ModelSerializer):
     Serializer for Vessel model
     """
     class Meta:
+        """
+        Vessel Serializer meta
+        """
         model = Vessel
         fields = ['id', 'code']
-

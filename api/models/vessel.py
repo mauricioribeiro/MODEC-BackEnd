@@ -9,7 +9,7 @@ class Vessel(AbstractModel):
     """
     Vessel model
     """
-    code = models.CharField(null=False, default=None, max_length=5, verbose_name='Code', validators=[
+    code = models.CharField(null=False, blank=False, max_length=5, verbose_name='Code', validators=[
         RegexValidator(
             regex=r'^[A-Za-z]{2}[0-9]{3}$',
             message='Code must be in code format (AA000). Example: \'MV102\'',

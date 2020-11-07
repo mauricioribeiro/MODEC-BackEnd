@@ -70,14 +70,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/api/vessels/{{code}}",
+							"raw": "{{host}}/api/vessels/{{vessel_code}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"vessels",
-								"{{code}}"
+								"{{vessel_code}}"
 							]
 						},
 						"description": "Retrieve a single vessel by a given code"
@@ -124,6 +124,234 @@
 							"path": [
 								"api",
 								"vessels"
+							]
+						},
+						"description": "Create a vessel"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0371645f-dcf3-454f-92f6-a8fa16fa3b11",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"MX900\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/vessels/{{vessel_code}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels",
+								"{{vessel_code}}"
+							]
+						},
+						"description": "Update a vessel by a given content and code"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e254de22-b8c7-4d43-8c16-851f7956c742",
+								"exec": [
+									"pm.test(\"Status code is 204\", function () {\r",
+									"    pm.response.to.have.status(204);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/vessels/{{vessel_code}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels",
+								"{{vessel_code}}"
+							]
+						},
+						"description": "Delete a vessel by a given code"
+					},
+					"response": []
+				}
+			],
+			"description": "RESTful endpoints for Vessel resource ",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Equipments",
+			"item": [
+				{
+					"name": "List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "11a10a04-600e-433a-bab1-5962ad804597",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/vessels/{{vessel_code}}/equipments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels",
+								"{{vessel_code}}",
+								"equipments"
+							]
+						},
+						"description": "Show a list of vessels"
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "195f3c54-9e26-41b1-8318-ad0e16bf658a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/api/vessels/{{vessel_code}}/equipments/{{equipment_code}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels",
+								"{{vessel_code}}",
+								"equipments",
+								"{{equipment_code}}"
+							]
+						},
+						"description": "Retrieve a single vessel by a given code"
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "58c0b0f2-bb99-42d9-9efb-86eefb006e4f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"compressor\",\r\n    \"code\": \"5310B9D7\",\r\n    \"location\": \"Brazil\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/vessels/{{vessel_code}}/equipments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"vessels",
+								"{{vessel_code}}",
+								"equipments"
 							]
 						},
 						"description": "Create a vessel"
@@ -206,7 +434,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0371645f-dcf3-454f-92f6-a8fa16fa3b11",
+								"id": "49ec4ebd-6da7-4339-b00c-83bfb3dcc853",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -225,7 +453,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"MX900\"\r\n}",
+							"raw": "{\r\n    \"name\": \"compressor\",\r\n    \"code\": \"5310B9D7\",\r\n    \"location\": \"Japan\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -233,14 +461,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/vessels/{{code}}",
+							"raw": "{{host}}/api/vessels/{{vessel_code}}/equipments/{{equipment_code}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"vessels",
-								"{{code}}"
+								"{{vessel_code}}",
+								"equipments",
+								"{{equipment_code}}"
 							]
 						},
 						"description": "Update a vessel by a given content and code"
@@ -324,7 +554,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e254de22-b8c7-4d43-8c16-851f7956c742",
+								"id": "f1edf857-308c-4fd7-b40a-68447d1a2662",
 								"exec": [
 									"pm.test(\"Status code is 204\", function () {\r",
 									"    pm.response.to.have.status(204);\r",
@@ -351,14 +581,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/vessels/{{code}}",
+							"raw": "{{host}}/api/vessels/{{vessel_code}}/equipments/{{equipment_code}}",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"vessels",
-								"{{code}}"
+								"{{vessel_code}}",
+								"equipments",
+								"{{equipment_code}}"
 							]
 						},
 						"description": "Delete a vessel by a given code"
@@ -437,7 +669,29 @@
 					]
 				}
 			],
-			"description": "RESTful endpoints for Vessel resource ",
+			"description": "RESTful endpoints for Vessel Equipments resource ",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "23270415-b348-45aa-8efe-6cbcd28925d9",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cb40095d-1b9e-46f1-88ec-84ffd02281ae",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
 			"protocolProfileBehavior": {}
 		}
 	],
@@ -465,14 +719,19 @@
 	],
 	"variable": [
 		{
-			"id": "52c94326-e2fb-4494-afa3-f9a42dc81718",
+			"id": "379429ab-2aea-448f-90c1-753f090b87d5",
 			"key": "host",
 			"value": "http://localhost:8000"
 		},
 		{
-			"id": "7e2eb92e-24cd-4c5a-9108-ed665da0552e",
-			"key": "code",
+			"id": "1bed977c-74e7-4f2e-bebd-a608b33691cb",
+			"key": "vessel_code",
 			"value": "MV102"
+		},
+		{
+			"id": "eedb9543-8aa5-400d-ae3f-328a22d5ce72",
+			"key": "equipment_code",
+			"value": "5310B9D7"
 		}
 	],
 	"protocolProfileBehavior": {}
