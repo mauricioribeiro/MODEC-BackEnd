@@ -81,6 +81,7 @@ class EquipmentActivateView(EquipmentStatusView):
     View for activate a equipment status
     """
     action = 'activate'
+    view_name = 'equipment-activate'
 
 
 class EquipmentInactivateView(EquipmentStatusView):
@@ -88,3 +89,4 @@ class EquipmentInactivateView(EquipmentStatusView):
     View for activate a equipment status
     """
     action = 'inactivate'
+    view_name = 'equipment-inactivate'

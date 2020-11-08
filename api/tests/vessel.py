@@ -21,6 +21,20 @@ class VesselTests(APITestCase):
         url, data = reverse('vessel-list'), {'code': code}
         return self.client.post(url, data, format='json')
 
+    def test_list_vessels(self):
+        """
+        Tests GET /vessels endpoint by create random vessels and after check json list
+        """
+        vessels = random.randint(1, 9)
+        for i in range(vessels):
+            self.__create_vessel(code=f'MV10{i}')
+
+        url = reverse('vessel-list')
+        response = self.client.get(url, format='json')
+
+        self.assertEqual(response.status_code, HTTP_200_OK)
+        self.assertEqual(Vessel.objects.count(), vessels)
+
     def test_create_valid_vessel(self):
         """
         Tests POST /vessels endpoint by passing a valid vessel json
@@ -41,23 +55,9 @@ class VesselTests(APITestCase):
         self.assertEqual(response.status_code, HTTP_400_BAD_REQUEST)
         self.assertEqual(Vessel.objects.count(), 0)
 
-    def test_list_vessels(self):
-        """
-        Tests GET /vessels endpoint by create random vessels and after check json list
-        """
-        vessels = random.randint(1, 9)
-        for i in range(vessels):
-            self.__create_vessel(code=f'MV10{i}')
-
-        url = reverse('vessel-list')
-        response = self.client.get(url, format='json')
-
-        self.assertEqual(response.status_code, HTTP_200_OK)
-        self.assertEqual(Vessel.objects.count(), vessels)
-
     def test_update_vessel(self):
         """
-        Tests UPDATE /vessels endpoint by create and update a vessel
+        Tests PUT /vessels endpoint by create and update a vessel
         """
         old_code, new_code = 'MV102', 'MV103'
         self.__create_vessel(code=old_code)
