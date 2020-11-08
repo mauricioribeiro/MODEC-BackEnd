@@ -130,7 +130,7 @@ Equipment json structure is defined by:
 In case of activate/inactivate endpoints, the json structure is defined by:
 ```json
 {
-  "codes": ["MV102", ...] # list of equipment code to inactivate or activate
+  "codes": ["MV102", "MV103"] 
 }
 ```
 
@@ -141,7 +141,7 @@ Instructions about how to import and use collections can be found [here](https:/
 
 ## Tests
 
-Besides Postman tests (which check response status and response time), this project has unit tests for all endpoints.
+Besides Postman tests (which check response time and status code), this project has unit tests for all endpoints.
 To run the unit tests, execute the following command:
 > python manage.py test
 
