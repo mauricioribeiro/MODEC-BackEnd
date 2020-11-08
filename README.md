@@ -32,7 +32,7 @@ To install Docker, visit [https://docs.docker.com/](https://docs.docker.com/) an
 
 After install Docker, open your terminal/cmd, navigate to repository folder and execute the following command:
 
-> docker-compose up -d
+> docker-compose up --build
 
 PS: even it's used only [Alpine images](https://hub.docker.com/_/alpine) to speed up the process, this command can take some minutes in the first time, 
 since it will download postgres/python images and configure the whole environment. 
