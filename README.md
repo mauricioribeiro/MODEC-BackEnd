@@ -58,7 +58,7 @@ The following steps are required in installation:
     - Open your terminal/cmd, navigate to repository folder and execute:
         > pip install -r requirements.txt
 - Create `.env` file in repository folder:
-```
+```ini
 ### .env ###
 # Project secret key
 SECRET_KEY=modec-backend-api
