@@ -1,6 +1,5 @@
 from country_list import countries_for_language
 from rest_framework import serializers
-from rest_framework.reverse import reverse
 
 from api.models import Equipment
 from modec.settings import LANGUAGE_CODE

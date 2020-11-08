@@ -10,7 +10,7 @@
 			"name": "Vessels",
 			"item": [
 				{
-					"name": "List",
+					"name": "List Vessels",
 					"event": [
 						{
 							"listen": "test",
@@ -47,7 +47,7 @@
 					"response": []
 				},
 				{
-					"name": "Retrieve",
+					"name": "Retrieve a Verssel",
 					"event": [
 						{
 							"listen": "test",
@@ -85,7 +85,7 @@
 					"response": []
 				},
 				{
-					"name": "Create",
+					"name": "Create Vessel",
 					"event": [
 						{
 							"listen": "test",
@@ -131,7 +131,7 @@
 					"response": []
 				},
 				{
-					"name": "Update",
+					"name": "Update Vessel",
 					"event": [
 						{
 							"listen": "test",
@@ -178,7 +178,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete",
+					"name": "Delete Vessel",
 					"event": [
 						{
 							"listen": "test",
@@ -232,7 +232,7 @@
 			"name": "Equipments",
 			"item": [
 				{
-					"name": "List",
+					"name": "List Equipments",
 					"event": [
 						{
 							"listen": "test",
@@ -266,12 +266,12 @@
 								"equipments"
 							]
 						},
-						"description": "Show a list of vessels"
+						"description": "Show a list of equipments"
 					},
 					"response": []
 				},
 				{
-					"name": "Retrieve",
+					"name": "Retrieve a Equipment",
 					"event": [
 						{
 							"listen": "test",
@@ -306,12 +306,12 @@
 								"{{equipment_code}}"
 							]
 						},
-						"description": "Retrieve a single vessel by a given code"
+						"description": "Retrieve a single equipment by a given code and vessel"
 					},
 					"response": []
 				},
 				{
-					"name": "Create",
+					"name": "Create Equipment",
 					"event": [
 						{
 							"listen": "test",
@@ -354,7 +354,7 @@
 								"equipments"
 							]
 						},
-						"description": "Create a vessel"
+						"description": "Create a equipment"
 					},
 					"response": [
 						{
@@ -429,7 +429,7 @@
 					]
 				},
 				{
-					"name": "Update",
+					"name": "Update Equipment",
 					"event": [
 						{
 							"listen": "test",
@@ -473,7 +473,7 @@
 								"{{equipment_code}}"
 							]
 						},
-						"description": "Update a vessel by a given content and code"
+						"description": "Update a equipment by a given content and code"
 					},
 					"response": [
 						{
@@ -549,7 +549,243 @@
 					]
 				},
 				{
-					"name": "Delete",
+					"name": "Inactivate Equipments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f98a3a5a-2a05-4c46-a276-da0e22c05c58",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codes\": [\"5310B9D7\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/equipments/inactivate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"equipments",
+								"inactivate"
+							]
+						},
+						"description": "Inactivate a list of equipments by given codes"
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"MX900\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/vessels/{{code}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"vessels",
+										"{{code}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 07 Nov 2020 17:57:40 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"code\": \"MV103\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Activate Equipments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "30065fb3-b12a-49d0-bef5-5ea196bd560a",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codes\": [\"5310B9D7\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/equipments/activate",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"equipments",
+								"activate"
+							]
+						},
+						"description": "Activate a list of equipments by given codes"
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"code\": \"MX900\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/vessels/{{code}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"vessels",
+										"{{code}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 07 Nov 2020 17:57:40 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"code\": \"MV103\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Equipment",
 					"event": [
 						{
 							"listen": "test",
@@ -593,7 +829,7 @@
 								"{{equipment_code}}"
 							]
 						},
-						"description": "Delete a vessel by a given code"
+						"description": "Delete a equipment by a given code"
 					},
 					"response": [
 						{
@@ -719,17 +955,17 @@
 	],
 	"variable": [
 		{
-			"id": "379429ab-2aea-448f-90c1-753f090b87d5",
+			"id": "e10c75ac-18a1-4563-b6f3-330902353fab",
 			"key": "host",
 			"value": "http://localhost:8000"
 		},
 		{
-			"id": "1bed977c-74e7-4f2e-bebd-a608b33691cb",
+			"id": "eaf59090-20a7-45b7-8d11-c589e32c7be0",
 			"key": "vessel_code",
 			"value": "MV102"
 		},
 		{
-			"id": "eedb9543-8aa5-400d-ae3f-328a22d5ce72",
+			"id": "c8db204f-bbb8-4f2a-be3c-d038b5b149af",
 			"key": "equipment_code",
 			"value": "5310B9D7"
 		}

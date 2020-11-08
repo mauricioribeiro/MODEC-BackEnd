@@ -17,4 +17,13 @@ urlpatterns = [
     url(r'^vessels/(?P<vessel_code>[A-Za-z0-9]+)/equipments/(?P<code>[A-Za-z0-9]+)$',
         views.EquipmentDetailView.as_view(),
         name=views.EquipmentDetailView.view_name),
+
+    url(r'^equipments/activate$',
+        views.EquipmentActivateView.as_view(),
+        name=views.EquipmentActivateView.view_name),
+
+    url(r'^equipments/inactivate$',
+        views.EquipmentInactivateView.as_view(),
+        name=views.EquipmentInactivateView.view_name),
+
 ]
