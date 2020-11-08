@@ -145,7 +145,7 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'DEBUG' if DEBUG else 'INFO',
             'class': 'logging.StreamHandler',
             'formatter': 'simple'
         }
@@ -153,7 +153,7 @@ LOGGING = {
     'loggers': {
         '': {
             'handlers': ['console'],
-            'level': 'INFO'
+            'level': 'DEBUG' if DEBUG else 'INFO'
         }
     }
 }

@@ -4,12 +4,27 @@ services:
     image: postgres:alpine
     volumes:
       - db_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=modec
       - POSTGRES_DB=modec
+  api:
+    build: .
+    depends_on:
+      - db
     ports:
-      - "5432:5432"
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=modec-backend-api
+      - DEBUG=0
+      - ALLOWED_HOSTS=localhost,0.0.0.0,127.0.0.1
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=modec
+      - DB_USER=postgres
+      - DB_PASS=modec
 
 volumes:
   db_data:
